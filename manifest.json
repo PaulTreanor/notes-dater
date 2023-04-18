@@ -1,11 +1,11 @@
 {
-	"id": "obsidian-sample-plugin",
-	"name": "Sample Plugin",
+	"id": "notes-dater",
+	"name": "Notes dater",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "Adds created_on and updated_on metadata to the top of all Obsidian notes, even old notes.",
+	"author": "Paul Treanor",
+	"authorUrl": "https://paultreanor.com",
+	"fundingUrl": "",
 	"isDesktopOnly": false
 }
