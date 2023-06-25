@@ -5,11 +5,11 @@ An [obsidian.md](https://obsidian.md) plugin that adds created_on and updated_on
 If you have any feedback or feature requests please open an issue or email me to let me know. 
 
 ## Features 
-- [ ] Adds created_on and updated_on metadata to the top of existing notes (should do this on plugin activation) 
+- [ ] Adds created_on and updated_on metadata to the top of existing notes (should do this on plugin activation/cmd palette) 
 - [ ] Adds created_on and updated_on metadata to the top of newly created notes
 - [ ] Updates updated_on metadata when a note is updated
 - [ ] Include settings to allow users to choose how dates are formatted
-- [ ] Include setting that allows users to remove the created_on and updated_on metadata from the top of all notes
+- [ ] Include setting (or command in palette) that allows users to remove the created_on and updated_on metadata from the top of all notes
 
 ## Changelog
 
@@ -24,7 +24,7 @@ If you have any feedback or feature requests please open an issue or email me to
 
 ## Manually installing the plugin
 
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `/path/to/your/vault/.obsidian/plugins/your-plugin-id/`.
+- Copy over `main.js` and `manifest.json` to your vault `/path/to/your/vault/.obsidian/plugins/your-plugin-id/`.
 - Enable plugins in Obsidian settings
 - Enable Note Dater in the Community Plugins tab
 
@@ -42,4 +42,26 @@ Pull requests are welcome.
 
 ## Development Notes
 
-[Obsidian Plugin docs](https://marcus.se.net/obsidian-plugin-docs)
+**Notes for myself, because I forget...**
+- The plugin development environment is inside the vault, in the `.obsidian/plugins` directory. So the same as an actual installed plugin.
+- The `manifest.json` and `main.ts` files are the plugins, basically. 
+- When you make a change, reload the plugin by toggling it off and on again in the Community Plugins tab.
+
+**API Notes** 
+- `Plugin` is a class. 
+- `onload()` runs when user starts the plugin
+- `onunload()` runs when user stops the plugin
+
+**Commands** 
+- Users call commands from the command palette or with hotkeys
+- It makes sense for notes-dater to run from the command palette
+
+**Settings**
+- I'm going to need to allow the user to interact with settings
+
+**Vault** 
+- This is the main part of the API I'm going to need to interact with
+
+**Useful links**
+
+- [Obsidian Plugin docs](https://marcus.se.net/obsidian-plugin-docs)
