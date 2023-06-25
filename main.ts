@@ -1,10 +1,7 @@
 import { Plugin } from 'obsidian';
 import * as YAML from 'js-yaml';
-
 import * as fs from 'fs/promises';
 
-
-// Create function to format ISOString to dd-mm-yyyy
 function formatDate(date: string) {
   const dateObject = new Date(date);
   const day = dateObject.getDate();

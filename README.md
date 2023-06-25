@@ -1,17 +1,21 @@
 # Obsidian Notes dater 
 
-An [obsidian.md](https://obsidian.md) plugin that adds created_on and updated_on metadata to the top of all Obsidian notes, even old notes that were created before the plugin was installed.
+An [obsidian.md](https://obsidian.md) plugin that adds created_on and updated_on metadata to the top of all Obsidian notes, even old notes that were created before the plugin was installed. It's not quite ready for use yet. 
 
 If you have any feedback or feature requests please open an issue or email me to let me know. 
 
 ## Features 
-- [ ] Adds created_on and updated_on metadata to the top of existing notes (should do this on plugin activation/cmd palette) 
+- [x] Adds created_on and updated_on metadata to the top of existing notes 
 - [ ] Adds created_on and updated_on metadata to the top of newly created notes
 - [ ] Updates updated_on metadata when a note is updated
-- [ ] Include settings to allow users to choose how dates are formatted
-- [ ] Include setting (or command in palette) that allows users to remove the created_on and updated_on metadata from the top of all notes
+- [ ] Include command in palette that allows users to remove the created_on and updated_on metadata from the top of all notes
 
-## Changelog
+## Current issues
+- [ ] Adding the frontmatter to the files changes the last updated time. This is a problem because it means that the plugin will keep updating the last updated time.
+- [ ] If frontmatter has no other content (after removing notes-dater stuff), remove frontmatter entirely
+
+## Things I might add in the future
+- [ ] Include settings to allow users to choose how dates are formatted
 
 
 ## Installing and running the plugin in devlopment mode
