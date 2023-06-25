@@ -1,6 +1,7 @@
 import { Plugin } from 'obsidian';
 import * as YAML from 'js-yaml';
 import * as fs from 'fs/promises';
+import { TFile } from 'obsidian';
 
 function formatDate(date: string) {
   const dateObject = new Date(date);
@@ -25,7 +26,40 @@ export default class NotesDaterPlugin extends Plugin {
       id: 'undo-update-metadata',
       name: 'Undo update frontmatter metadata',
       callback: () => this.undoUpdateMetadata(),
-		});
+    });
+    
+    this.registerEvent(this.app.vault.on("create", async (file: TFile) => {
+      if (file instanceof TFile && file.extension === "md") {
+          console.log(`New file created: ${file.basename}`);
+
+          // Load file content
+          const fileContent = await this.app.vault.adapter.read(file.path);
+          let frontmatter: any = {};
+          let content = fileContent;
+          const frontmatterRegex = /^---\n([\s\S]*?)\n---\n([\s\S]*)$/;
+          const match = frontmatterRegex.exec(fileContent);
+
+          if (match) {
+              frontmatter = YAML.load(match[1]);
+              content = match[2];
+          }
+
+          // Get file stats
+          const filePath = this.app.vault.adapter.getFullPath(file.path);
+          const stats = await fs.stat(filePath);
+
+          // Update or add metadata in the frontmatter object
+          frontmatter['created_on'] = formatDate(stats.birthtime.toISOString())
+          frontmatter['updated_on'] = formatDate(stats.mtime.toISOString())
+
+          // Serialize the frontmatter and merge it back with the content
+          const updatedFrontmatter = YAML.dump(frontmatter);
+          const updatedContent = `---\n${updatedFrontmatter}---\n${content}`;
+
+          // Update file
+          await this.app.vault.modify(file, updatedContent);
+      }
+    }));
 		
   }
 
