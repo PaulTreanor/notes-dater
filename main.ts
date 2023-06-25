@@ -2,9 +2,9 @@ import { Plugin } from 'obsidian';
 import * as YAML from 'js-yaml';
 
 
-export default class MetadataExamplePlugin extends Plugin {
+export default class NotesDaterPlugin extends Plugin {
   async onload() {
-    console.log('Loading MetadataExamplePlugin');
+    console.log('Loading Notes Dater plugin');
 
     this.addCommand({
       id: 'update-metadata',
@@ -21,7 +21,7 @@ export default class MetadataExamplePlugin extends Plugin {
   }
 
   async onunload() {
-    console.log('Unloading MetadataExamplePlugin');
+    console.log('Unloading Notes Dater plugin');
   }
 
   async updateMetadata() {
@@ -34,7 +34,7 @@ export default class MetadataExamplePlugin extends Plugin {
         const frontmatterRegex = /^---\n([\s\S]*?)\n---\n([\s\S]*)$/;
         const match = frontmatterRegex.exec(fileContent);
 
-        let frontmatter = {};
+        let frontmatter : any = {};
         let content = fileContent;
 
         if (match) {
@@ -43,7 +43,8 @@ export default class MetadataExamplePlugin extends Plugin {
         }
 
         // Update or add metadata in the frontmatter object
-        frontmatter['custom_property'] = 'custom_value';
+        frontmatter['created_on'] = 'made up value';
+        frontmatter['updated_on'] = 'made up value 2';
 
         // Serialize the frontmatter and merge it back with the content
         const updatedFrontmatter = YAML.dump(frontmatter);
@@ -72,8 +73,9 @@ export default class MetadataExamplePlugin extends Plugin {
           const frontmatter = YAML.load(match[1]);
           const content = match[2];
   
-          if (frontmatter.hasOwnProperty('custom_property')) {
-            delete frontmatter['custom_property'];
+          if (frontmatter.hasOwnProperty('created_on') && frontmatter.hasOwnProperty('updated_on')) {
+            delete frontmatter['created_on'];
+            delete frontmatter['updated_on'];
   
             // Serialize the frontmatter and merge it back with the content
             const updatedFrontmatter = YAML.dump(frontmatter);
