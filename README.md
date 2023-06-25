@@ -5,7 +5,7 @@ An [obsidian.md](https://obsidian.md) plugin that adds created_on and updated_on
 If you have any feedback or feature requests please open an issue or email me to let me know. 
 
 ## Features 
-- [ ] Adds created_on and updated_on metadata to the top of existing notes
+- [ ] Adds created_on and updated_on metadata to the top of existing notes (should do this on plugin activation) 
 - [ ] Adds created_on and updated_on metadata to the top of newly created notes
 - [ ] Updates updated_on metadata when a note is updated
 - [ ] Include settings to allow users to choose how dates are formatted
@@ -39,3 +39,7 @@ Pull requests are welcome.
 
 ## Author 
 [Paul Treanor](https://paultreanor.com)
+
+## Development Notes
+
+[Obsidian Plugin docs](https://marcus.se.net/obsidian-plugin-docs)
