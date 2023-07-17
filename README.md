@@ -6,7 +6,7 @@ If you have any feedback or feature requests please open an issue or email me to
 
 ## Features 
 - [x] Adds created_on and updated_on metadata to the top of existing notes 
-- [ ] Adds created_on and updated_on metadata to the top of newly created notes
+- [x] Adds created_on and updated_on metadata to the top of newly created notes
 - [ ] Updates updated_on metadata when a note is updated
 - [ ] Include command in palette that allows users to remove the created_on and updated_on metadata from the top of all notes
 

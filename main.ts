@@ -28,38 +28,21 @@ export default class NotesDaterPlugin extends Plugin {
       callback: () => this.undoUpdateMetadata(),
     });
     
-    this.registerEvent(this.app.vault.on("create", async (file: TFile) => {
-      if (file instanceof TFile && file.extension === "md") {
-          console.log(`New file created: ${file.basename}`);
+    // Register vault change event for new files
+    // this.registerEvent(this.app.vault.on("create", async (file: TFile) => {
+    //   if (file instanceof TFile && file.extension === "md") {
+    //       console.log(`New file created: ${file.basename}`);
+    //       await this.updateFrontmatter(file);
+    //   }
+    // }));
 
-          // Load file content
-          const fileContent = await this.app.vault.adapter.read(file.path);
-          let frontmatter: any = {};
-          let content = fileContent;
-          const frontmatterRegex = /^---\n([\s\S]*?)\n---\n([\s\S]*)$/;
-          const match = frontmatterRegex.exec(fileContent);
-
-          if (match) {
-              frontmatter = YAML.load(match[1]);
-              content = match[2];
-          }
-
-          // Get file stats
-          const filePath = this.app.vault.adapter.getFullPath(file.path);
-          const stats = await fs.stat(filePath);
-
-          // Update or add metadata in the frontmatter object
-          frontmatter['created_on'] = formatDate(stats.birthtime.toISOString())
-          frontmatter['updated_on'] = formatDate(stats.mtime.toISOString())
-
-          // Serialize the frontmatter and merge it back with the content
-          const updatedFrontmatter = YAML.dump(frontmatter);
-          const updatedContent = `---\n${updatedFrontmatter}---\n${content}`;
-
-          // Update file
-          await this.app.vault.modify(file, updatedContent);
-      }
-    }));
+    // Register vault change event for modified files
+    // this.registerEvent(this.app.vault.on("modify", async (file: TFile) => {
+    //     if (file instanceof TFile && file.extension === "md") {
+    //         // console.log(`File modified: ${file.basename}`);
+    //         await this.updateFrontmatter(file);
+    //     }
+    // }));
 		
   }
 
@@ -87,6 +70,7 @@ export default class NotesDaterPlugin extends Plugin {
   
           const filePath = fileManager.adapter.getFullPath(file.path);
           const stats = await fs.stat(filePath);
+          
   
           // Update or add metadata in the frontmatter object
           frontmatter['created_on'] = formatDate(stats.birthtime.toISOString())
@@ -120,14 +104,21 @@ export default class NotesDaterPlugin extends Plugin {
           const content = match[2];
   
           if (frontmatter.hasOwnProperty('created_on') && frontmatter.hasOwnProperty('updated_on')) {
+            console.log(file.basename);
             delete frontmatter['created_on'];
             delete frontmatter['updated_on'];
-  
+
             // Serialize the frontmatter and merge it back with the content
             const updatedFrontmatter = YAML.dump(frontmatter);
             const updatedContent = `---\n${updatedFrontmatter}---\n${content}`;
   
             await fileManager.modify(file, updatedContent);
+          }
+          
+          // If there are no more properties in the frontmatter, remove it
+          if (Object.keys(frontmatter).length === 0) {
+            await fileManager.modify(file, content);
+            continue;
           }
         }
       } catch (error) {
@@ -137,6 +128,36 @@ export default class NotesDaterPlugin extends Plugin {
 
     console.log('Frontmatter metadata update undone.');
   }
+
+
+  async updateFrontmatter(file: TFile) {
+    // Load file content
+    const fileContent = await this.app.vault.adapter.read(file.path);
+    let frontmatter: any = {};
+    let content = fileContent;
+    const frontmatterRegex = /^---\n([\s\S]*?)\n---\n([\s\S]*)$/;
+    const match = frontmatterRegex.exec(fileContent);
+
+    if (match) {
+        frontmatter = YAML.load(match[1]);
+        content = match[2];
+    }
+
+    // Get file stats
+    const filePath = this.app.vault.adapter.getFullPath(file.path);
+    const stats = await fs.stat(filePath);
+
+    // Update or add metadata in the frontmatter object
+    frontmatter['created_on'] = formatDate(stats.birthtime.toISOString())
+    frontmatter['updated_on'] = formatDate(stats.mtime.toISOString())
+
+    // Serialize the frontmatter and merge it back with the content
+    const updatedFrontmatter = YAML.dump(frontmatter);
+    const updatedContent = `---\n${updatedFrontmatter}---\n${content}`;
+
+    // Update file
+    await this.app.vault.modify(file, updatedContent);
+}
 	
 	
 }
