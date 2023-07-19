@@ -13,6 +13,12 @@ If you have any feedback or feature requests please open an issue or email me to
 - [ ] Include settings to allow users to toggle what the plugin shows 
 - [ ] Allow users to format how date is displayed
 
+## Manually installing the plugin
+
+- Copy over `main.js` and `manifest.json` to your vault `/path/to/your/vault/.obsidian/plugins/your-plugin-id/`.
+- Enable plugins in Obsidian settings
+- Enable Note Dater in the Community Plugins tab
+
 ## Installing and running the plugin in devlopment mode
 
 - Clone this repo into the `/path/to/your/vault/.obsidian/plugins directory`
@@ -21,11 +27,8 @@ If you have any feedback or feature requests please open an issue or email me to
 - Enable plugins in Obsidian settings
 - Enable Note Dater in the Community Plugins tab
 
-## Manually installing the plugin
-
-- Copy over `main.js` and `manifest.json` to your vault `/path/to/your/vault/.obsidian/plugins/your-plugin-id/`.
-- Enable plugins in Obsidian settings
-- Enable Note Dater in the Community Plugins tab
+## Running tests
+- `npx vitest`
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
