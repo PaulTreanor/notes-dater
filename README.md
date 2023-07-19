@@ -11,9 +11,6 @@ It works for all files including notes, images, and PDFs.
 If you have any feedback or feature requests please open an issue or email me to let me know. 
 
 
-## Features 
-- [x] Adds Created on and Updated on metadata of open note to the status bar 
-
 ## Manually installing the plugin
 
 - Copy over `main.js` and `manifest.json` to your vault `/path/to/your/vault/.obsidian/plugins/your-plugin-id/`.
