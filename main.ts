@@ -2,10 +2,7 @@ import { Plugin } from 'obsidian';
 import * as fs from 'fs/promises';
 import formatDate from 'formatDate';
 
-
 export default class NotesDaterPlugin extends Plugin {
-
-
   async onload() {
     console.log('Loading Notes Dater plugin');
 
@@ -24,7 +21,6 @@ export default class NotesDaterPlugin extends Plugin {
         }
       })
     );
-      
   }
 
   async onunload() {
@@ -43,6 +39,4 @@ export default class NotesDaterPlugin extends Plugin {
     }
     return null;
   }
-  
-  
 }
