@@ -1,22 +1,19 @@
 # Obsidian Notes dater 
 
-An [obsidian.md](https://obsidian.md) plugin that adds created_on and updated_on metadata to the top of all Obsidian notes, even old notes that were created before the plugin was installed. It's not quite ready for use yet. 
+An [obsidian.md](https://obsidian.md) plugin that adds created_on and updated_on metadata of Obsidian notes to the status bar of Obsidian (bottom of the screen). It works for all notes, even old notes that were created before the plugin was installed. It's not quite ready for use yet. 
 
 If you have any feedback or feature requests please open an issue or email me to let me know. 
 
 ## Features 
-- [x] Adds created_on and updated_on metadata to the top of existing notes 
-- [x] Adds created_on and updated_on metadata to the top of newly created notes
-- [ ] Updates updated_on metadata when a note is updated
-- [ ] Include command in palette that allows users to remove the created_on and updated_on metadata from the top of all notes
+- [ ] Adds created_on and updated_on metadata of open note to the status bar 
+- [ ] Include settings to allow users to toggle what the plugin shows 
 
-## Current issues
-- [ ] Adding the frontmatter to the files changes the last updated time. This is a problem because it means that the plugin will keep updating the last updated time.
-- [ ] If frontmatter has no other content (after removing notes-dater stuff), remove frontmatter entirely
+## Why the status bar 
+My origional plan (and a lot of earlier commits to this project) was to add created_on and updated_on data to the frontmatter at the top of each file. I decided to change my approach because:
 
-## Things I might add in the future
-- [ ] Include settings to allow users to choose how dates are formatted
-
+1. The plugin literally updated the contents all files when installed, which means that the last updated dates would always be after the plugin was installed. 
+2. There was infinate loop problems since the plugin updated files when they were edited, by editing them. 
+3. It's a bit intrusive and assumes people don't mind their notes being edited. It's just overkill and not how any other notes app does this. 
 
 ## Installing and running the plugin in devlopment mode
 
