@@ -1,17 +1,18 @@
 # Obsidian Notes dater 
 
-An [obsidian.md](https://obsidian.md) plugin that adds the date that the active Obsidian file was created on and last updated on to the status bar of Obsidian (bottom of the screen). 
+An [obsidian.md](https://obsidian.md) plugin that adds the date that the active Obsidian file was created on and last updated on to the status bar.
+
+The plugin adds the information highlighted in red in this image:
+
+![Screenshot of plugin in use](screenshot.png)
 
 It works for all files including notes, images, and PDFs. 
 
-Because this app uses the status bar it is not supported in the mobile app. 
-
 If you have any feedback or feature requests please open an issue or email me to let me know. 
+
 
 ## Features 
 - [x] Adds Created on and Updated on metadata of open note to the status bar 
-- [ ] Include settings to allow users to toggle what the plugin shows 
-- [ ] Allow users to format how date is displayed
 
 ## Manually installing the plugin
 
