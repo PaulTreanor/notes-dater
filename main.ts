@@ -16,6 +16,11 @@ export default class NotesDaterPlugin extends Plugin {
   async onload() {
     console.log('Loading Notes Dater plugin');
 
+    // Add "hello world" to status bar
+    const item = this.addStatusBarItem();
+    item.createEl("span", { text: "Hello from the status bar 👋" });
+
+
     this.addCommand({
       id: 'update-metadata',
       name: 'Update frontmatter metadata',
@@ -27,23 +32,6 @@ export default class NotesDaterPlugin extends Plugin {
       name: 'Undo update frontmatter metadata',
       callback: () => this.undoUpdateMetadata(),
     });
-    
-    // Register vault change event for new files
-    // this.registerEvent(this.app.vault.on("create", async (file: TFile) => {
-    //   if (file instanceof TFile && file.extension === "md") {
-    //       console.log(`New file created: ${file.basename}`);
-    //       await this.updateFrontmatter(file);
-    //   }
-    // }));
-
-    // Register vault change event for modified files
-    // this.registerEvent(this.app.vault.on("modify", async (file: TFile) => {
-    //     if (file instanceof TFile && file.extension === "md") {
-    //         // console.log(`File modified: ${file.basename}`);
-    //         await this.updateFrontmatter(file);
-    //     }
-    // }));
-		
   }
 
   async onunload() {

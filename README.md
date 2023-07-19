@@ -2,6 +2,8 @@
 
 An [obsidian.md](https://obsidian.md) plugin that adds created_on and updated_on metadata of Obsidian notes to the status bar of Obsidian (bottom of the screen). It works for all notes, even old notes that were created before the plugin was installed. It's not quite ready for use yet. 
 
+Because this app uses the status bar it is not supported in the mobile app. 
+
 If you have any feedback or feature requests please open an issue or email me to let me know. 
 
 ## Features 
