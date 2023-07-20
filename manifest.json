@@ -3,9 +3,9 @@
 	"name": "Notes dater",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Adds created_on and updated_on dates of the active note to the status bar.",
+	"description": "Adds created on and last updated on dates of the active note to the status bar.",
 	"author": "Paul Treanor",
 	"authorUrl": "https://paultreanor.com",
 	"fundingUrl": "",
-	"isDesktopOnly": false
+	"isDesktopOnly": true
 }
