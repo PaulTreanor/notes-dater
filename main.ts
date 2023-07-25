@@ -2,7 +2,6 @@ import { Plugin, moment } from 'obsidian';
 
 export default class NotesDaterPlugin extends Plugin {
   async onload() {
-    console.log('Loading Notes Dater plugin');
 
     const statusBarCreatedOn = this.addStatusBarItem();
     const statusBarUpdatedOn = this.addStatusBarItem();
