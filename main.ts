@@ -1,4 +1,4 @@
-import { Plugin, moment } from 'obsidian';
+import { Plugin, moment, FileView } from 'obsidian';
 
 export default class NotesDaterPlugin extends Plugin {
   async onload() {
@@ -8,11 +8,10 @@ export default class NotesDaterPlugin extends Plugin {
 
     this.registerEvent(
       this.app.workspace.on('active-leaf-change', async () => {
-
+        const activeView = this.app.workspace.getActiveViewOfType(FileView);
         const activeFile = this.app.workspace.getActiveFile();
-
-        if (activeFile) {
-          const stats = activeFile?.stat;
+        if (activeView && activeFile) {
+          const stats = activeFile?.stat
           const createdDate = moment(stats.ctime).format('do MMM YYYY');
           const updatedDate = moment(stats.mtime).format('do MMM YYYY');
           statusBarCreatedOn.setText(`Created on: ${createdDate}`);
