@@ -1,6 +1,5 @@
-import { Plugin } from 'obsidian';
+import { Plugin, moment } from 'obsidian';
 import * as fs from 'fs/promises';
-import formatDate from 'formatDate';
 
 export default class NotesDaterPlugin extends Plugin {
   async onload() {
@@ -14,8 +13,8 @@ export default class NotesDaterPlugin extends Plugin {
         const getActiveFilePath = this.getActiveFilePath();
         if (getActiveFilePath) {
           const stats = await fs.stat(getActiveFilePath);
-          const createdDate = formatDate(stats.birthtime.toISOString());
-          const updatedDate = formatDate(stats.mtime.toISOString());
+          const createdDate = moment(stats.birthtime).format('do MMM YYYY');
+          const updatedDate = moment(stats.mtime).format('do MMM YYYY');
           statusBarCreatedOn.setText(`Created on: ${createdDate}`);
           statusBarUpdatedOn.setText(`Updated on: ${updatedDate}`);
         }
