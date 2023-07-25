@@ -6,6 +6,5 @@
 	"description": "Adds created on and last updated on dates of the active note to the status bar.",
 	"author": "Paul Treanor",
 	"authorUrl": "https://paultreanor.com",
-	"fundingUrl": "",
 	"isDesktopOnly": true
 }
