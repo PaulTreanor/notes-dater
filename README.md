@@ -26,16 +26,6 @@ If you have any feedback or feature requests please open an issue or email me to
 - Enable plugins in Obsidian settings
 - Enable Note Dater in the Community Plugins tab
 
-## Installing and running the plugin in devlopment mode
-
-- Clone this repo into the `/path/to/your/vault/.obsidian/plugins directory`
-- `npm i` or `yarn` to install dependencies
-- `npm run dev` to start compilation in watch mode.
-- Enable plugins in Obsidian settings
-- Enable Note Dater in the Community Plugins tab
-
-## Running tests
-- `npx vitest`
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
