@@ -25,8 +25,8 @@ export default class NotesDaterPlugin extends Plugin {
     const activeFile = this.app.workspace.getActiveFile();
     if (activeView && activeFile) {
       const stats = activeFile?.stat
-      const createdDate = moment(stats.ctime).format('do MMM YYYY');
-      const updatedDate = moment(stats.mtime).format('do MMM YYYY');
+      const createdDate = moment(stats.ctime).format('DD MMM YYYY');
+      const updatedDate = moment(stats.mtime).format('DD MMM YYYY');
       statusBarCreatedOn.setText(`Created on: ${createdDate}`);
       statusBarUpdatedOn.setText(`Updated on: ${updatedDate}`);
     }
