@@ -11,6 +11,15 @@ It works for all files including notes, images, and PDFs.
 If you have any feedback or feature requests please open an issue or email me to let me know. 
 
 
+## Installing the plugin 
+- Open Obsidian settings 
+- Go to Community Plugins 
+- Select Browse and search for Notes Dater
+- Install the plugin
+- Look through "Installed plugins" and enable Notes Dater (toggle)
+
+
+
 ## Manually installing the plugin
 
 - Copy over `main.js` and `manifest.json` to your vault `/path/to/your/vault/.obsidian/plugins/your-plugin-id/`.
