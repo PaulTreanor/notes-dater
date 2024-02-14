@@ -99,8 +99,8 @@ export default class NotesDaterPlugin extends Plugin {
       const stats = activeFile?.stat
       const createdDateFrontmatter = app.metadataCache.getCache(activeFile.path)?.frontmatter?.[this.settings.createdDateFrontmatterProperty]
       const updatedDateFrontmatter = app.metadataCache.getCache(activeFile.path)?.frontmatter?.[this.settings.updatedDateFrontmatterProperty]
-      const createdDate = moment(createdDateFrontmatter || stats.ctime).format(this.settings.dateFormat);
-      const updatedDate = moment(updatedDateFrontmatter || stats.mtime).format(this.settings.dateFormat);
+      const createdDate = moment(moment(createdDateFrontmatter).isValid() ? createdDateFrontmatter : stats.ctime).format(this.settings.dateFormat);
+      const updatedDate = moment(moment(updatedDateFrontmatter).isValid() ? updatedDateFrontmatter : stats.mtime).format(this.settings.dateFormat);
       statusBarCreatedOn.setText(`Created on: ${createdDate}`);
       statusBarUpdatedOn.setText(`Updated on: ${updatedDate}`);
     }
