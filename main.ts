@@ -58,6 +58,8 @@ interface NotesDaterPluginSettings {
 
 const DEFAULT_SETTINGS: Partial<NotesDaterPluginSettings> = {
   dateFormat: "DD MMM YYYY",
+  createdDateFrontmatterProperty: "",
+  updatedDateFrontmatterProperty: ""
 };
 
 export default class NotesDaterPlugin extends Plugin {
@@ -92,6 +94,10 @@ export default class NotesDaterPlugin extends Plugin {
   async onunload() {
   }
 
+  isValidDate(dateFrontmatter) { 
+    return moment(dateFrontmatter).isValid() && dateFrontmatter !== undefined;
+  }
+
   setStatusBarDateValues(statusBarCreatedOn, statusBarUpdatedOn) {
     const activeView = this.app.workspace.getActiveViewOfType(FileView);
     const activeFile = this.app.workspace.getActiveFile();
@@ -99,8 +105,8 @@ export default class NotesDaterPlugin extends Plugin {
       const stats = activeFile?.stat
       const createdDateFrontmatter = app.metadataCache.getCache(activeFile.path)?.frontmatter?.[this.settings.createdDateFrontmatterProperty]
       const updatedDateFrontmatter = app.metadataCache.getCache(activeFile.path)?.frontmatter?.[this.settings.updatedDateFrontmatterProperty]
-      const createdDate = moment(moment(createdDateFrontmatter).isValid() ? createdDateFrontmatter : stats.ctime).format(this.settings.dateFormat);
-      const updatedDate = moment(moment(updatedDateFrontmatter).isValid() ? updatedDateFrontmatter : stats.mtime).format(this.settings.dateFormat);
+      const createdDate = moment(this.isValidDate(createdDateFrontmatter) ? createdDateFrontmatter : stats.ctime).format(this.settings.dateFormat);
+      const updatedDate = moment(this.isValidDate(updatedDateFrontmatter) ? updatedDateFrontmatter : stats.mtime).format(this.settings.dateFormat);
       statusBarCreatedOn.setText(`Created on: ${createdDate}`);
       statusBarUpdatedOn.setText(`Updated on: ${updatedDate}`);
     }
