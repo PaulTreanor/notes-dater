@@ -26,6 +26,15 @@ If you have any feedback or feature requests please open an issue or email me to
 - Enable plugins in Obsidian settings
 - Enable Note Dater in the Community Plugins tab
 
+## Running the plugin in developer mode
+- Clone the repo to the `/path/to/your/vault/.obsidian/plugins/` directory on your local machine
+- Run `npm install` to install the dependencies
+- Run `npm run dev` to start the plugin in developer mode
+- Enable plugins in Obsidian settings
+- Enable Note Dater in the Community Plugins tab
+
+## 
+
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
