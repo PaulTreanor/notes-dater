@@ -29,7 +29,7 @@ If you have any feedback or feature requests please open an issue or email me to
 
 ## Contributing
 I'm not accepting pull requests because this plugin is feature-complete, but feel free to fork this and make your own plugin!
-=
+
 ## Author 
 [Paul Treanor](https://paultreanor.com)
 
