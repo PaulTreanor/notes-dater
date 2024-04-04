@@ -19,20 +19,17 @@ If you have any feedback or feature requests please open an issue or email me to
 - Look through "Installed plugins" and enable Notes Dater (toggle)
 
 
-
 ## Manually installing the plugin
-
 - Copy over `main.js` and `manifest.json` to your vault `/path/to/your/vault/.obsidian/plugins/your-plugin-id/`.
 - Enable plugins in Obsidian settings
 - Enable Note Dater in the Community Plugins tab
-
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
 ## Contributing
-Pull requests are welcome.
-
+I'm not accepting pull requests because this plugin is feature-complete, but feel free to fork this and make your own plugin!
+=
 ## Author 
 [Paul Treanor](https://paultreanor.com)
 
