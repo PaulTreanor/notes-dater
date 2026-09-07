@@ -24,6 +24,9 @@ If you have any feedback or feature requests please open an issue or email me to
 - Enable plugins in Obsidian settings
 - Enable Note Dater in the Community Plugins tab
 
+## Note on Linux file systems
+On some Linux file systems, file creation time is not stored or reported, so the "Created on:" date may be missing. The plugin is desktop-only and reads file metadata without modifying your notes.
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
