@@ -1,6 +1,6 @@
 {
 	"name": "notes-dater",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "An obsidian.md plugin that adds created_on and updated_on metadata to the top of all Obsidian notes, even old notes.",
 	"main": "main.js",
 	"scripts": {
