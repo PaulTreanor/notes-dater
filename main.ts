@@ -20,7 +20,7 @@ export default class NotesDaterPlugin extends Plugin {
   async onunload() {
   }
 
-  setStatusBarDateValues(statusBarCreatedOn, statusBarUpdatedOn) {
+  setStatusBarDateValues(statusBarCreatedOn: HTMLElement, statusBarUpdatedOn: HTMLElement) {
     const activeView = this.app.workspace.getActiveViewOfType(FileView);
     const activeFile = this.app.workspace.getActiveFile();
     if (activeView && activeFile) {
